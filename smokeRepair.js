@@ -3,12 +3,9 @@ import { check, sleep, fail } from 'k6';
 import { Trend } from 'k6/metrics';  // pridani metriky//
 import {generateRandomText, generateRandomNr} from "./helpers/utilities.js";
 import{headers, baseUrl} from "./data/constants.js";
-import {createAccount, createTransaction, createPiggy, createCurrency, createCategory, bill, createBudget} from "./helpers/dataCreator.js";
+import {createAccount, createTransaction, createCurrency, createCategory, bill, createBudget} from "./helpers/dataCreator.js";
 
-const acountCreation = new Trend('waiting_time_account');
-const currencyGroup = new Trend('duration_currency');
 const acountGroup = new Trend('duration_accountGr');
-const piggyGroup = new Trend('duration_piggy');
 const transactionGroup = new Trend('duration_transactions');
 
 export const options= {
@@ -32,8 +29,10 @@ export const options= {
     //         startVUs: 0,
     //         stages: [
     //             { duration: '3m', target: 10 },
+    //             { duration: '2m', target: 15 },
     //             { duration: '1m', target: 15 },
     //             { duration: '3m', target: 5 },
+    //             { duration: '1m', target: 0 },
     //         ],
     //         gracefulRampDown: '0s',
     //     }
